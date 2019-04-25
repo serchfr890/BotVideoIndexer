@@ -1,0 +1,29 @@
+﻿{
+  "name": "TextFlowDialog",
+  "services": [
+    {
+      "type": "endpoint",
+      "name": "development",
+      "endpoint": "http://localhost:3978/api/messages",
+      "appId": "",
+      "appPassword": "",
+      "id": "1"
+    },
+    {
+      "type": "endpoint",
+      "name": "production",
+      "endpoint": "https://TextFlowDialog.azurewebsites.net/api/messages",
+      "appId": "<YOUR APP ID>",
+      "appPassword": "<YOUR APP PASSWORD>",
+      "id": "2"
+    },
+    {
+      "appId": "5f898c9a-0663-4dab-bc72-dda8e40d1848",
+      "authoringKey": "3bec9cddbe314ebcb1a0bd81c3e66567",
+      "id": "16964240-7bc5-11e8-9b1c-7bca00a2e2c6",
+      "name": "sdautomation",
+      "subscriptionKey": "3bec9cddbe314ebcb1a0bd81c3e66567",
+      "type": "luis",
+      "version": "0.1"
+    }
+}
