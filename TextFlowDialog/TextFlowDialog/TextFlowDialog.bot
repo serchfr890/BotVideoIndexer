@@ -18,12 +18,16 @@
       "id": "2"
     },
     {
-      "appId": "5f898c9a-0663-4dab-bc72-dda8e40d1848",
-      "authoringKey": "3bec9cddbe314ebcb1a0bd81c3e66567",
-      "id": "16964240-7bc5-11e8-9b1c-7bca00a2e2c6",
-      "name": "sdautomation",
-      "subscriptionKey": "3bec9cddbe314ebcb1a0bd81c3e66567",
       "type": "luis",
-      "version": "0.1"
+      "name": "VideoIndexerLUIS",
+      "appId": "2bc812b7-4540-4b20-8258-66b85c04a96b",
+      "version": "0.1",
+      "authoringKey": "ece1ea6973f74a0e8295b4031731297f",
+      "subscriptionKey": "ece1ea6973f74a0e8295b4031731297f",
+      "region": "westus",
+      "id": "3"
     }
+  ],
+  "padlock": "",
+  "version": "2.0"
 }

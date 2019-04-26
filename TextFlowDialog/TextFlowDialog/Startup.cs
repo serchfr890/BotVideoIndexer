@@ -11,6 +11,7 @@ using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Bot.Builder.AI.Luis;
+using TextFlowDialog.BotCognitiveServices;
 
 namespace TextFlowDialog
 {
@@ -50,10 +51,10 @@ namespace TextFlowDialog
             services.AddBot<TextFlowDialogBot>(options =>
            {
                var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-
+               var botFilePath = Configuration.GetSection("botFilePath")?.Value;
                 // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
                 var botConfig = BotConfiguration.Load(@".\TextFlowDialog.bot", secretKey);
-               services.AddSingleton(sp => botConfig);
+               services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
 
                 // Retrieve current endpoint.
                 var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == "development").FirstOrDefault();
@@ -61,6 +62,13 @@ namespace TextFlowDialog
                {
                    throw new InvalidOperationException($"The .bot file does not contain a development endpoint.");
                }
+
+               //Initialize Bot Connected Services Client 
+               var connectedServices = new BotServiceLUIS(botConfig);
+               services.AddSingleton(sp => connectedServices);
+
+               //Retribe current endpoint 
+               var environment = _isProduction ? "production" : "development";
 
                options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
 

@@ -42,6 +42,7 @@ namespace TextFlowDialog
         {
             if (turnContext.Activity.Type == ActivityTypes.Message)
             {
+                var luisResults = await _services.
                 await RootDialog.MainDialog(turnContext);
             }
             else if (turnContext.Activity.Type is ActivityTypes.MessageUpdate)
